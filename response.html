@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Response Html</title>
+</head>
+<body>
+    <div class="Introduction">
+        <h1>quotes</h1>
+        <h4>To Get quotes click on the button</h4>
+        <div>
+            <button onclick="getquotes()">Get quotes</button>
+        </div>
+    </div>
+
+    <div id="quotes"></div>
+    <script>
+        const getquotes = () => {
+            fetch(' http://127.0.0.1:3001/').then(
+                (res) => {
+                    console.log(res)
+                    return res.text()
+                }
+            ).then(data => {
+            
+                console.log(data)
+                document.getElementById("quotes").innerHTML = data
+            }).catch(err => {
+                document.getElementById("quotes").innerHTML = err
+            })
+        }
+    </script>
+</body>
+</html>
